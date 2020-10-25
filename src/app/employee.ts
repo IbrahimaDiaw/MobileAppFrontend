@@ -1,5 +1,3 @@
-import { Departement } from "./departement";
-
 export class Employee {
     id:string;
     prenom:string;
