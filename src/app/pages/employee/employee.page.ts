@@ -87,6 +87,10 @@ export class EmployeePage implements OnInit {
     this.router.navigate(['edit-employee',id]);
   }
 
+  details(id:string){
+    this.router.navigate(['details-employee',id]);
+  }
+
 
 
 }

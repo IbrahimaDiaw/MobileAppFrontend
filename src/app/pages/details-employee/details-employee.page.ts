@@ -6,13 +6,12 @@ import { Employee } from '../../employee';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { NavController, MenuController, LoadingController, ToastController } from '@ionic/angular';
-
 @Component({
-  selector: 'app-edit-employee',
-  templateUrl: './edit-employee.page.html',
-  styleUrls: ['./edit-employee.page.scss'],
+  selector: 'app-details-employee',
+  templateUrl: './details-employee.page.html',
+  styleUrls: ['./details-employee.page.scss'],
 })
-export class EditEmployeePage implements OnInit {
+export class DetailsEmployeePage implements OnInit {
   id:string;
   employee:Employee;
   departements:Observable<Departement[]>;
@@ -24,6 +23,7 @@ export class EditEmployeePage implements OnInit {
     public menuCtrl: MenuController,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController
+    
   ) { }
 
   ngOnInit() {
@@ -35,30 +35,6 @@ export class EditEmployeePage implements OnInit {
             this.employee = data;
           }, error => console.log(error));
     this.departements = this.departementService.getdepartementlist();
-  }
-
-  async update(){
-    this.employeeService.edit(this.id,this.employee)
-        .subscribe(data => console.log(data), error => console.log(error));
-        this.employee = new Employee();
-        const loader = await this.loadingCtrl.create({
-          duration: 2000
-        });
-    
-        loader.present();
-        loader.onWillDismiss().then(async l => {
-          const toast = await this.toastCtrl.create({
-            message: 'Modification éffectuée avec succès',
-            duration: 2000
-          });
-    
-          toast.present();
-          this.navCtrl.navigateForward('/employee');
-        });
-  }
-
-  onSubmit(){
-    this.update();
   }
 
 }

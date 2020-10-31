@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list no-border>
+    <ion-card no-margin class="no-radius">
+      <ion-item lines="none" color="medium">
+        <ion-label>
+          <h2 no-margin class="fw500 no-margin">
+            <ion-text color="dark"> Informations du Personnel</ion-text>
+          </h2>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item class="label" no-line>Prénom : {{employee.prenom}}</ion-item>
+          <ion-item class="label" no-line>Nom : {{employee.nom}}</ion-item>
+          <ion-item class="label" no-line>Addresse : {{employee.adresse}}</ion-item>
+          <ion-item class="label" no-line>Email : {{employee.email}}</ion-item>
+          <ion-item class="label" no-line>Telephone : {{employee.tel}}</ion-item>
+          <ion-item class="label" no-line>Fonction : {{employee.fonction}}</ion-item>
+          <ion-label *ngFor="let dep of departements| async">
+            <ion-item class="label" *ngIf="employee.departement == dep.id"no-line>Service : {{dep.nom}}</ion-item>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>
+
