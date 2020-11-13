@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details Congés</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list no-border>
+    <ion-card no-margin class="no-radius">
+      <ion-item lines="none" color="medium">
+        <ion-label>
+          <h2 no-margin class="fw500 no-margin">
+            <ion-text color="dark"> Details complet d'un Congés</ion-text>
+          </h2>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item class="label" no-line>Nature Congés : {{conge.nature}}</ion-item>
+          <ion-item class="label" no-line>Date de Début : {{conge.dateDebut}}</ion-item>
+          <ion-item class="label" no-line>Date de la Fin  : {{conge.dateFin}}</ion-item>
+          <ion-item><strong> Les employes en congés : </strong> </ion-item>
+          <div *ngFor="let employee of conge.employee ">
+            <ion-label *ngFor="let emp of employees| async">
+              <ion-item class="label" *ngIf="employee == emp.id" > 
+                {{emp.prenom}} {{emp.nom}} 
+              </ion-item>
+            </ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>

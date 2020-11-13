@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class DepartementService {
 
-  private apiUrl = "http://localhost:8080/api/departements";
+  private apiUrl = "https://gp-backendapi.herokuapp.com/api/departements";
 
   constructor(private http:HttpClient) { }
 

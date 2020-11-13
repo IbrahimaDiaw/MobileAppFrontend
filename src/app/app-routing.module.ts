@@ -24,6 +24,10 @@ const routes: Routes = [
   { path: 'edit-absence/:id', loadChildren: './pages/edit-absence/edit-absence.module#EditAbsencePageModule' },
   { path: 'edit-conges/:id', loadChildren: './pages/edit-conges/edit-conges.module#EditCongesPageModule' },
   { path: 'details-employee/:id', loadChildren: './pages/details-employee/details-employee.module#DetailsEmployeePageModule' },
+  { path: 'details-conges/:id', loadChildren: './pages/details-conges/details-conges.module#DetailsCongesPageModule' },
+  { path: 'details-formation/:id', loadChildren: './pages/details-formation/details-formation.module#DetailsFormationPageModule' },
+  { path: 'details-absence/:id', loadChildren: './pages/details-absence/details-absence.module#DetailsAbsencePageModule' },
+
 
 
 
