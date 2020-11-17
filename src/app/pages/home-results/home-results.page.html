@@ -8,53 +8,78 @@
           <ion-text color="light" class="fw700">Accueil</ion-text>
         </ion-text>
     </ion-title>
-    <ion-buttons slot="end">
-      <ion-button size="small" shape="round" color="medium" (click)="notifications()">
-        <ion-icon name="notifications"></ion-icon>
-        <ion-badge color="dark" slot="end">2</ion-badge>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-  <ion-toolbar color="dark">
-    <ion-searchbar [(ngModel)]="searchKey"></ion-searchbar>
-    <ion-buttons slot="end">
-      <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
-        <ion-icon name="options"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card no-margin class="no-radius">
-    <ion-item lines="none" color="medium">
-      <ion-label>
-        <h2 no-margin class="fw500 no-margin">
-          <ion-text color="dark">Alert / Toast test</ion-text>
-        </h2>
+  <ion-grid no-margin class="no-radius">
+    <ion-row>
+      <ion-col size="6">
+        <!-- simple card with icon and text -->
+        <ion-card color="light">
+          <ion-icon name="person"></ion-icon>
+          <ion-text>
+            <h2>Profile</h2>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <!-- simple card with icon and text -->
+        <ion-card color="danger" (click)="employes()">
+          <ion-icon name="people"></ion-icon>
+          <ion-text>
+            <h2>Employés ({{employees}})</h2>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <!-- simple card with icon and text -->
+        <ion-card color="success" (click)="formations()">
+          <ion-icon name="school"></ion-icon>
+          <ion-text>
+            <h2>Formation ({{nbformation}})</h2>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <!-- simple card with icon and text -->
+        <ion-card color="secondary" (click)="departements()">
+          <ion-icon name="list"></ion-icon>
+          <ion-text>
+            <h2>Département ({{nbdepartement}})</h2>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <!-- simple card with icon and text -->
+        <ion-card color="tertiary" (click)="conges()">
+          <ion-icon name="pin"></ion-icon>
+          <ion-text>
+            <h2>Congés ({{nbconge}})</h2>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <!-- simple card with icon and text -->
+        <ion-card color="medium" (click)="absences()">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-text>
+            <h2>Absences ({{nbabsence}})</h2>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <!-- simple card with icon and text -->
+        <ion-card color="primary" (click)="setting()" >
+          <ion-icon name="settings"></ion-icon>
+          <ion-text>
+            <h2>Settings</h2>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-        <p class="text-11x no-margin">
-          <ion-text  color="primary">{{yourLocation}}</ion-text>
-        </p>
-      </ion-label>
-      <ion-button shape="round" fill="outline" size="small" color="primary" (click)="alertLocation()">
-        Location
-        <ion-icon name="locate"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-card>
-
-  <ion-card class="bg-white">
-    <ion-img [src]="themeCover"></ion-img>
-    <ion-button expand="full" color="dark" (click)="presentImage(themeCover)" no-margin>
-      Modal 1: Modal Image
-    </ion-button>
-  </ion-card>
-
-  <ion-button margin shape="round" expand="full" color="secondary" (click)="searchFilter()">
-    Modal 2: Search Filter
-  </ion-button>
-  
-  <popmenu></popmenu>
+  <!--<popmenu></popmenu>-->
 </ion-content>
   

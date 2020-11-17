@@ -33,6 +33,7 @@ export class AbsencePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.displaylist();
   } 
 
   displaylist(){

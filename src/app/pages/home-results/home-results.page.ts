@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import {
   NavController,
   AlertController,
@@ -12,16 +12,34 @@ import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.
 import { ImagePage } from './../modal/image/image.page';
 // Call notifications test by Popover and Custom Component.
 import { NotificationsComponent } from './../../components/notifications/notifications.component';
+import { Router } from '@angular/router';
+import { Employee } from '../../employee';
+import { EmployeeService } from '../../employee.service';
+import { FormationService } from '../../formation.service';
+import {Formation } from '../../formation';
+import {Departement} from '../../departement';
+import {DepartementService } from '../../departement.service';
+import {Absence} from '../../absence';
+import {AbsenceService} from '../../absence.service';
+import {Conges} from '../../conges';
+import {CongesService} from '../../conges.service';
 
+import { from, Observable } from 'rxjs';
 @Component({
   selector: 'app-home-results',
   templateUrl: './home-results.page.html',
   styleUrls: ['./home-results.page.scss']
 })
-export class HomeResultsPage {
+export class HomeResultsPage implements OnInit {
   searchKey = '';
   yourLocation = '123 Test Street';
   themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
+  
+  employees:Observable<Employee[]>;
+  nbformation:Observable<Formation[]>;
+  nbabsence:Observable<Absence[]>;
+  nbconge:Observable<Conges[]>;
+  nbdepartement:Observable<Departement[]>;
 
   constructor(
     public navCtrl: NavController,
@@ -29,9 +47,75 @@ export class HomeResultsPage {
     public popoverCtrl: PopoverController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private router:Router,
+    private employeeServcice:EmployeeService,
+    private congesService:CongesService,
+    private formationService:FormationService,
+    private departementService:DepartementService,
+    private absenceService:AbsenceService
   ) {
 
+  }
+  ngOnInit() {
+    this.congesService.congeslist().subscribe
+    ((data) => {
+      this.nbconge = data.length;
+      return this.nbconge;
+    }, (err) => {
+        console.log("not allowed");
+    });
+
+    this.employeeServcice.getemployeelist().subscribe
+    ((data) => {
+      this.employees = data.length;
+      return this.employees;
+    }, (err) => {
+        console.log("not allowed");
+    });
+
+    this.formationService.formationlist().subscribe
+    ((data) => {
+      this.nbformation = data.length;
+      return this.nbformation;
+    }, (err) => {
+        console.log("not allowed");
+    });
+
+    this.departementService.getdepartementlist().subscribe
+    ((data) => {
+      this.nbdepartement = data.length;
+      return this.nbdepartement;
+    }, (err) => {
+        console.log("not allowed");
+    });
+
+    this.absenceService.absencelist().subscribe
+    ((data) => {
+      this.nbabsence = data.length;
+      return this.nbabsence;
+    }, (err) => {
+        console.log("not allowed");
+    });
+
+  }
+  employes(){
+    this.router.navigate(['employee']);
+  }
+  departements(){
+    this.router.navigate(['departement']);
+  }
+  absences(){
+    this.router.navigate(['absence']);
+  }
+  formations(){
+    this.router.navigate(['formation']);
+  }
+  conges(){
+    this.router.navigate(['conges']);
+  }
+  setting(){
+    this.router.navigate(['settings']);
   }
 
   ionViewWillEnter() {
