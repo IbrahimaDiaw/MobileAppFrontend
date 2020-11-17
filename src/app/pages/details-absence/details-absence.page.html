@@ -1,9 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>details-absence</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details de l'absence</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list no-border>
+    <ion-card no-margin class="no-radius">
+      <ion-item lines="none" color="medium">
+        <ion-label>
+          <h2 no-margin class="fw500 no-margin">
+            <ion-text color="dark"> Details complet d'une absence</ion-text>
+          </h2>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item class="label" no-line><string>Motif </string> : {{absence.motif}}</ion-item>
+          <ion-item class="label" no-line><strong>Date</strong> : {{absence.date}}</ion-item>
+          <ion-item class="label" no-line><strong>Durée</strong>  : {{absence.duree}}</ion-item>
+          <ion-item><strong> Les employés qui sont absents à cette date : </strong> </ion-item>
+          <div *ngFor="let employee of absence.employee ">
+            <ion-label *ngFor="let emp of employees| async">
+              <ion-item class="label" *ngIf="employee == emp.id" > 
+                {{emp.prenom}} {{emp.nom}} 
+              </ion-item>
+            </ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
 </ion-content>

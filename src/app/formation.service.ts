@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FormationService {
-  private apiUrl = "http://localhost:8080/api/formation";
+  private apiUrl = "https://gp-backendapi.herokuapp.com/api/formation";
   constructor( private http : HttpClient ) { }
 
   formationlist() : Observable<any> {

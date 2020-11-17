@@ -24,7 +24,7 @@
           <ion-item class="label" no-line>Nature Congés : {{conge.nature}}</ion-item>
           <ion-item class="label" no-line>Date de Début : {{conge.dateDebut}}</ion-item>
           <ion-item class="label" no-line>Date de la Fin  : {{conge.dateFin}}</ion-item>
-          <ion-item><strong> Les employes en congés : </strong> </ion-item>
+          <ion-item><strong> Les employés en congés : </strong> </ion-item>
           <div *ngFor="let employee of conge.employee ">
             <ion-label *ngFor="let emp of employees| async">
               <ion-item class="label" *ngIf="employee == emp.id" > 
