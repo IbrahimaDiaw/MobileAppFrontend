@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Mis à jour</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card no-margin class="no-radius">
+    <ion-item lines="none" color="medium">
+      <ion-label>
+        <h2 no-margin class="fw500 no-margin">
+          <ion-text color="dark"> Mettre à un département</ion-text>
+        </h2>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <div class="bg-white">
+      <form (ngSubmit)="onSubmit()" padding-right>
+        <ion-item line="none" no-padding class="animated fadeInUp">
+          <ion-label for="name" position="floating">Nom du Département</ion-label>
+          <ion-input type="text" id="nom" required [(ngModel)]="departement.nom" name="nom"></ion-input>
+        </ion-item>  
+        <ion-button type="submit" icon-left size="medium" expand="full" shape="round" color="dark">Modifier</ion-button>
+      </form>
+  
+  </div>
+
+</ion-content>

@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+        <ion-text color="light">
+          <ion-text color="light" class="fw700">Liste des formations</ion-text>
+        </ion-text>
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="dark">
+    <ion-searchbar [(ngModel)]="searchKey"></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
+        <ion-icon name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card no-margin class="no-radius">
+    <ion-item lines="none" color="medium">
+      <ion-label>
+        <h2 no-margin class="fw500 no-margin">
+          <ion-text color="dark"> Liste des formations</ion-text>
+        </h2>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card class="bg-white">
+    <ion-item-sliding  *ngFor="let formation of formations | async; let i = index ; ">
+      <ion-item-options side="start">
+        <ion-item-option (click)="delete(formation.id)" color="danger" expandable>
+            Supprimer
+        </ion-item-option>
+        <ion-item-option (click)="update(formation.id)" color="primary" expandable>
+          Editer
+      </ion-item-option>
+      </ion-item-options>
+      <ion-item line="none" (click)="details(formation.id)" >
+        <ion-label>
+          <h2 no-margin class="fw500 no-margin">
+            <ion-icon name="list" color="primary"></ion-icon>
+            <ion-text> {{formation.libelle }}</ion-text>
+          </h2>
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-card>
+
+</ion-content>
+<ion-footer>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" class="animated fadeInDown">
+    <ion-fab-button (click)="create()">
+      <ion-ripple-effect></ion-ripple-effect>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-footer>
+

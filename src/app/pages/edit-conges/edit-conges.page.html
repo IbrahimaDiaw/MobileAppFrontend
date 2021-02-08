@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="secondary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        <ion-text color="light">
+          <ion-text color="light" class="fw700">Mettre à jour </ion-text>
+        </ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card no-margin class="no-radius">
+    <ion-item lines="none" color="medium">
+      <ion-label>
+        <h2 no-margin class="fw500 no-margin">
+          <ion-text color="dark"> Mise à jour d'un Conges</ion-text>
+        </h2>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <div class="bg-white">
+      <form (ngSubmit)="onSubmit()" padding-right>
+        <ion-item line="none" class="animated fadeInUp">
+          <ion-label for="name" position="floating">Nature</ion-label>
+          <ion-input type="text" id="nature" required [(ngModel)]="conge.nature" name="nature"></ion-input>
+        </ion-item>
+        <ion-item line="none"  class="animated fadeInUp">
+          <ion-label for="name" position="floating">Date Debut</ion-label>
+          <ion-input type="date" id="dateDebut" required [(ngModel)]="conge.dateDebut" name="dateDebut"></ion-input>
+        </ion-item>
+        <ion-item line="none" class="animated fadeInUp">
+          <ion-label for="name" position="floating">Date Fin</ion-label>
+          <ion-input type="date" id="dateFin" required [(ngModel)]="conge.dateFin" name="dateFin"></ion-input>
+        </ion-item>  
+        <ion-item>
+          <ion-label>Employés</ion-label>
+          <ion-select  name="employee" [(ngModel)]="conge.employee" multiple >
+            <ion-select-option  *ngFor="let emp of employees| async" [value]="emp.id">{{emp.prenom }} {{emp.nom }}</ion-select-option> 
+          </ion-select>
+        </ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" icon-left size="medium" expand="full" shape="round" color="dark">Update</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button type="reset" icon-left size="medium" expand="full" shape="round" color="danger">Annuler</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+      </form>
+  
+  </div>
+
+</ion-content>

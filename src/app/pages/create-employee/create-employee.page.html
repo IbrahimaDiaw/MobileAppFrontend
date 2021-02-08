@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="secondary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        <ion-text color="light">
+          <ion-text color="light" class="fw700">Création</ion-text>
+        </ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card no-margin class="no-radius">
+    <ion-item lines="none" color="medium">
+      <ion-label>
+        <h2 no-margin class="fw500 no-margin">
+          <ion-text color="dark"> Création d'un nouvel Employé</ion-text>
+        </h2>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <div class="bg-white">
+      <form (ngSubmit)="onSubmit()" padding-right>
+        <ion-item line="none" class="animated fadeInUp">
+          <ion-label for="name" position="floating">Prénom</ion-label>
+          <ion-input type="text" id="prenom" required [(ngModel)]="employee.prenom" name="prenom"></ion-input>
+        </ion-item>
+        <ion-item line="none"  class="animated fadeInUp">
+          <ion-label for="name" position="floating">Nom</ion-label>
+          <ion-input type="text" id="nom" required [(ngModel)]="employee.nom" name="nom"></ion-input>
+        </ion-item>
+        <ion-item line="none" class="animated fadeInUp">
+          <ion-label for="name" position="floating">Adresse email</ion-label>
+          <ion-input type="email" id="nom" required [(ngModel)]="employee.email" name="email"></ion-input>
+        </ion-item>
+        <ion-item line="none" class="animated fadeInUp">
+          <ion-label for="name" position="floating">Adresse</ion-label>
+          <ion-input type="text" id="adresse" required [(ngModel)]="employee.adresse" name="adresse"></ion-input>
+        </ion-item>  
+        <ion-item line="none" class="animated fadeInUp">
+          <ion-label for="name" position="floating">Téléphone</ion-label>
+          <ion-input type="number" id="tel" required [(ngModel)]="employee.tel" name="tel"></ion-input>
+        </ion-item>
+        <ion-item line="none" class="animated fadeInUp">
+          <ion-label for="name" position="floating">Fonction</ion-label>
+          <ion-input type="text" id="fonction" required [(ngModel)]="employee.fonction" name="fonction"></ion-input>
+        </ion-item> 
+        <ion-item line="none" class="animated fadeInUp">
+          <ion-label for="name" position="floating">Salaire</ion-label>
+          <ion-input type="number" id="salaire" required [(ngModel)]="employee.salaire" name="salaire"></ion-input>
+        </ion-item> 
+        <ion-item>
+          <ion-label>Département</ion-label>
+          <ion-select  name="departement" [(ngModel)]="employee.departement" (ionChange)='setDepartement($event)'>
+            <ion-select-option  *ngFor="let dep of departements| async" [value]="dep.id">{{dep.nom }}</ion-select-option> 
+          </ion-select>
+        </ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" icon-left size="medium" expand="full" shape="round" color="dark">Ajouter</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button type="reset" icon-left size="medium" expand="full" shape="round" color="danger">Annuler</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+      </form>
+  
+  </div>
+
+</ion-content>
