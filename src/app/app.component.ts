@@ -70,7 +70,7 @@ export class AppComponent {
       },
 
       {
-        title: 'App Settings',
+        title: 'Configuration',
         url: '/settings',
         direct: 'forward',
         icon: 'cog'

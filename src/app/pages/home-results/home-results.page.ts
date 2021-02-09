@@ -121,6 +121,10 @@ export class HomeResultsPage implements OnInit {
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
   }
+  
+  goToEditProgile() {
+    this.navCtrl.navigateForward('edit-profile');
+  }
 
   settings() {
     this.navCtrl.navigateForward('settings');
