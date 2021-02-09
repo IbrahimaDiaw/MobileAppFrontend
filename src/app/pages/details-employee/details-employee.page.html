@@ -27,7 +27,7 @@
           <ion-item class="label" no-line>Email : {{employee.email}}</ion-item>
           <ion-item class="label" no-line>Telephone : {{employee.tel}}</ion-item>
           <ion-item class="label" no-line>Fonction : {{employee.fonction}}</ion-item>
-          <ion-item class="label" no-line>Salaire : {{employee.salaire}}</ion-item>
+          <ion-item class="label" no-line>Salaire : {{employee.salaire}} FCFA</ion-item>
           <ion-label *ngFor="let dep of departements| async">
             <ion-item class="label" *ngIf="employee.departement == dep.id"no-line>Service : {{dep.nom}}</ion-item>
           </ion-label>

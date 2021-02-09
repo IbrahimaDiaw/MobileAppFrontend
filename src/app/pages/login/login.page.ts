@@ -85,7 +85,12 @@ export class LoginPage implements OnInit {
     this.navCtrl.navigateRoot('/register');
   }
 
-  goToHome() {
+  async goToHome() {
+    const loader = await this.loadingCtrl.create({
+      duration: 2000
+    });
+
+    loader.present();
     this.navCtrl.navigateRoot('/home-results');
   }
 
