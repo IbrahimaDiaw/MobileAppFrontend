@@ -9,7 +9,7 @@ import { NavController, MenuController, ToastController, AlertController, Loadin
 })
 export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
-
+  user = { email:'', password:'' };
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -34,7 +34,46 @@ export class LoginPage implements OnInit {
       ])]
     });
   }
+  
+  async login (){
+    if(this.user.email == "ibrahima.diaw@univ-thies.sn" && this.user.password == "diaw"){
+      const loader = await this.loadingCtrl.create({
+        duration: 2000
+      });
 
+      loader.present();
+      loader.onWillDismiss().then(async l => {
+        const toast = await this.toastCtrl.create({
+          showCloseButton: false,
+          message: 'Connexion réussie!!',
+          duration: 3000,
+          position: 'bottom'
+        });
+
+        toast.present();
+        this.navCtrl.navigateRoot('/home-results');
+    });
+      
+    }else{
+      
+      const loader = await this.loadingCtrl.create({
+        duration: 2000
+      });
+
+      loader.present();
+      loader.onWillDismiss().then(async l => {
+        const toast = await this.toastCtrl.create({
+          showCloseButton: false,
+          message: 'Email ou mot de passe incorrect',
+          duration: 3000,
+          position: 'bottom'
+        });
+
+        toast.present();
+    });
+  }
+
+  }
   async forgotPass() {
     const alert = await this.alertCtrl.create({
       header: 'Forgot Password?',
