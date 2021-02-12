@@ -11,6 +11,7 @@ import { Employee } from '../../employee';
 import {EmployeeService} from '../../employee.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.page';
 
 @Component({
   selector: 'app-employee',
@@ -20,7 +21,7 @@ import { Router } from '@angular/router';
 export class EmployeePage implements OnInit {
 
   employes:Observable<Employee[]>;
-
+  searchKey = '';
   constructor(
     private employeeService:EmployeeService,
     public navCtrl:NavController,
@@ -91,6 +92,12 @@ export class EmployeePage implements OnInit {
     this.router.navigate(['details-employee',id]);
   }
 
-
+  async searchFilter () {
+    const modal = await this.modalCtrl.create({
+      component: SearchFilterPage
+    });
+    return await modal.present();
+  }
+  
 
 }

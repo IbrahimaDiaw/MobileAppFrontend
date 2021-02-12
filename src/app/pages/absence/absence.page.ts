@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Absence } from '../../absence';
 import { AbsenceService } from '../../absence.service';
+import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.page';
 
 @Component({
   selector: 'app-absence',
@@ -18,7 +19,7 @@ import { AbsenceService } from '../../absence.service';
   styleUrls: ['./absence.page.scss'],
 })
 export class AbsencePage implements OnInit {
-
+  searchKey = '';
   absences:Observable<Absence[]>;
   constructor(
     public navCtrl:NavController,
@@ -88,6 +89,12 @@ export class AbsencePage implements OnInit {
         duration: 2000
     });
     toast.present();
+  }
+  async searchFilter () {
+    const modal = await this.modalCtrl.create({
+      component: SearchFilterPage
+    });
+    return await modal.present();
   }
 
 }

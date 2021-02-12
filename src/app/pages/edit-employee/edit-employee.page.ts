@@ -56,6 +56,10 @@ export class EditEmployeePage implements OnInit {
           this.navCtrl.navigateForward('/employee');
         });
   }
+  setDepartement($event) {
+    let me=this;
+   console.log('Default language:', $event.target.value);
+  }
 
   onSubmit(){
     this.update();

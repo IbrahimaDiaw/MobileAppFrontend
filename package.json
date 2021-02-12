@@ -29,6 +29,7 @@
     "@ionic/angular": "^4.0.0",
     "@ionic/pro": "2.0.4",
     "cordova-android": "^7.0.0",
+    "cordova-browser": "6.0.0",
     "core-js": "^2.5.4",
     "firebase": "^8.2.6",
     "ionicons": "4.5.5",
@@ -71,7 +72,8 @@
   },
   "cordova": {
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ],
     "plugins": {
       "cordova-plugin-whitelist": {},

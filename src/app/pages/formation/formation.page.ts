@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Formation } from '../../formation';
 import { FormationService } from '../../formation.service';
+import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.page';
 
 @Component({
   selector: 'app-formation',
@@ -20,7 +21,7 @@ import { FormationService } from '../../formation.service';
 export class FormationPage implements OnInit {
 
   formations :Observable<Formation[]>;
-
+  searchKey = '';
   constructor(
     public navCtrl:NavController,
     public loadingCtrl:LoadingController,
@@ -90,4 +91,10 @@ export class FormationPage implements OnInit {
     toast.present();
   }
 
+  async searchFilter () {
+    const modal = await this.modalCtrl.create({
+      component: SearchFilterPage
+    });
+    return await modal.present();
+  }
 }

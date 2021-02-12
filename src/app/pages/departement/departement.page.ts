@@ -25,7 +25,7 @@ export class DepartementPage implements OnInit {
 
   themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
   departements:Observable<Departement[]>;
-
+  searchKey = '';
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,

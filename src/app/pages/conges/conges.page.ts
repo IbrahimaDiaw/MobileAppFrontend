@@ -11,6 +11,7 @@ import {
   ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.page';
 
 @Component({
   selector: 'app-conges',
@@ -20,7 +21,7 @@ import { Router } from '@angular/router';
 export class CongesPage implements OnInit {
 
   conges:Observable<Conges[]>;
-
+  searchKey = '';
   constructor(
     public navCtrl:NavController,
     public loadingCtrl:LoadingController,
@@ -91,4 +92,10 @@ export class CongesPage implements OnInit {
     toast.present();
   }
 
+  async searchFilter () {
+    const modal = await this.modalCtrl.create({
+      component: SearchFilterPage
+    });
+    return await modal.present();
+  }
 }
